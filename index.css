@@ -1,0 +1,215 @@
+/* styles.css */
+
+/* Reset básico */
+body, h1, h2, h3, p, ul, li, img {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+/* Configurações gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0f0f0f;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header fixo */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #962020;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+header img {
+    max-height: 60px;
+}
+
+/* Espaçamento para compensar o header fixo */
+main {
+    padding-top: 100px;
+}
+
+/* Container dos produtos */
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilo de cada produto */
+.product-box {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.product-box h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.product-box .price {
+    font-size: 16px;
+    color: #007b00;
+    font-weight: bold;
+}
+
+/* Seção de funcionalidades */
+.features {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.features h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.features ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.features li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #ffffff;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 20px;
+}
+
+footer p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .products-container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .features h2 {
+        font-size: 20px;
+    }
+
+    .features li {
+        font-size: 14px;
+    }
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    margin: 2rem auto;
+    overflow: hidden;
+    background-color: #0f0f0f;
+    
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.carousel-image.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.carousel-image.breaking {
+    animation: breakingEffect 1s ease forwards;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+/* Efeito de rachadura */
+@keyframes breakingEffect {
+    0% {
+        clip-path: polygon(50% 0%, 50% 50%, 0% 50%, 0% 0%);
+    }
+    50% {
+        clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+    }
+    100% {
+        clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 0% 0%);
+        opacity: 0;
+    }
+}
